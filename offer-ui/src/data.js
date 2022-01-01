@@ -43,5 +43,12 @@ const infoStore = [
     }
 ];
 
-
+const link = [
+    {
+        method:"GET",
+        baseURL:"https://apimena.herokuapp.com",
+        linkProduct:"/api/products",
+        description:"fetch the products"
+    }
+];
 export default infoStore;
