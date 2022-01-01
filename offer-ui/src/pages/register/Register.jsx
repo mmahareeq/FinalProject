@@ -14,12 +14,14 @@ export default function Register() {
         try{
             const res =await ApiClient.post("/api/auth/local/register",
                       {
-                            username,
-                            email,
-                            password,
+                            username:username,
+                            email:email,
+                            password:password,
                         });
-                        console.log(res.data);
-                        res.data && window.location.replace("/login")
+                        console.log("well done!")
+                        console.log(res);
+                        res.data && window.location.replace("/")
+                       
         }catch(err){
             setError(true);
         }

@@ -34,7 +34,7 @@
     margin-top: 20px;
     padding: 10px;
     cursor: pointer;
-    background-color: lightcoral;
+    background-color: #A5765A;
     border:none;
     color: white;
     border-radius: 10px;
@@ -42,12 +42,14 @@
 .registerReg
 {
     position:absolute;
+    width:100px;
     top: 60px;
     right:20px;
     cursor: pointer;
-    background-color: teal;
+    background-color: rgb(216, 74, 74);
     color: white;
     padding: 10px;
+    font-weight: 700;
     border:none ;
     border-radius: 10px;
 }

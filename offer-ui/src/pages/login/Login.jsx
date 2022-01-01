@@ -1,4 +1,4 @@
-import React,{useRef} from 'react'
+import React,{useRef,useState} from 'react'
 
 import ApiClient from '../../api-cofig/api';
 import './login.css'
@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 export default function Login() {
     const userRef = useRef();
     const passwordRef = useRef();
-    
+    const [error, setError] = useState(false)
 
    const handleSumbit = async (e)=>{
       e.preventDefault();
@@ -19,13 +19,14 @@ export default function Login() {
                password:passwordRef.current.value,
 
            });
-            console.log(res.data);
-            res.data && window.location.replace("/home")
+            res.data && window.location.replace("/")
+            console.log(res);
+            
         
    
         }catch(err)
         {
-
+            setError(true);
         }
        
 
@@ -35,12 +36,14 @@ export default function Login() {
         <div className="login">
             <span className="loginTitle">Login</span>
             <form className="loginForm" onSubmit={handleSumbit}>
-                <label>Username</label>
-                <input type="email" className="loginInput" placeholder="Enter your username ..." ref={userRef}/>
+                <label>Email</label>
+                <input type="email" className="loginInput" placeholder="Enter your Email ..." ref={userRef} required/>
             
                 <label>password</label>
-                <input type="password" className="loginInput" placeholder="Enter your password ..." ref={passwordRef}/>
+                <input type="password" className="loginInput" placeholder="Enter your password ..." ref={passwordRef} required/>
                 <button className="loginbtn" type="sumbit">Login</button>
+                {error?<span style={{color:"red",marginTop:"10px"}}> Something went wrong!</span>:null}
+
             </form>
             <button className="loginReg"><Link to="/register" className="link">Register</Link></button>
         </div>
