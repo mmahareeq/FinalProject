@@ -5,9 +5,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
 
+
 export default function Footer() {
     return (
-        <AppBar position="static" color="primary">
+        <AppBar position="static" style = {
+          {backgroundColor :'#93c7ba'
+          }}>
           <Container maxWidth="md">
             <Toolbar>
               <Typography variant="body1" color="inherit">

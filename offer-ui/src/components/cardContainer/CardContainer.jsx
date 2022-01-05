@@ -1,4 +1,4 @@
-
+import './cardContainer.css';
 import * as React from 'react';
 import Cards from '../../components/card/Cards'
 import { experimentalStyled as styled } from '@mui/material/styles';
@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function CardContainer() {
   return (
-    <Box sx={{ flexGrow: 1 }} padding={9} >
+    <Box sx={{ flexGrow: 1 }} padding={9} className="cardContainer-style" >
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         {Array.from(Array(6)).map((_, index) => (
           <Grid item xs={2} sm={4} md={4} key={index}>
