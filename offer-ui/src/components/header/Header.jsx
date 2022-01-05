@@ -157,9 +157,9 @@ function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }} >
-      <AppBar position="static"style = {{backgroundColor :'red'}}>
+      <AppBar position="static"style = {{backgroundColor :'blue'}}>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -167,7 +167,7 @@ function Header() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography
             variant="h6"
             noWrap
