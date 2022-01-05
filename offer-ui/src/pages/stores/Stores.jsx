@@ -1,14 +1,11 @@
-import React from 'react'
-import infoStore from '../../data'
+import React,{useEffect,useState} from 'react'
+
 import Store from '../store/Store'
+import axios from 'axios'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import Paper from '@material-ui/core/Paper';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,17 +23,36 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 export default function Stores() {
-    const [spacing, setSpacing] = React.useState(2);
-  const classes = useStyles();
-
-  
+    
+    const classes = useStyles();
+    
+    const [stores,setStore] = useState([])
+    
+    useEffect(() => {
+      async function fetchStores(){
+    
+        try{
+            const res = await axios.get("https://apimena.herokuapp.com/api/stores");
+            
+            setStore(res.data);
+            console.log(stores)
+                  
+        }catch(ERROR){
+          console.error(ERROR);
+        }
+            
+    }
+      fetchStores();
+      
+    },[]);
+    
   return (
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
         <Grid container className={classes.root2} xs={12} justifyContent="flex-start" >
-          {infoStore.map((value) => (
-            <Store info={value}/>
-          ))}
+          { stores.length !==0 ?stores.data.map((value) => (
+            <Store info={value} ></Store>
+          )):console.log("isloading")}
         </Grid>
       </Grid>
      

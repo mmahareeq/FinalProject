@@ -36,23 +36,25 @@ const useStyles = makeStyles({
 
 export default function Store({info}) {
   const classes = useStyles();
-  
+   console.log({info})
+   
 
   return (
+  
     <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {info.nameStroe}
+          {info.attributes.name}
         </Typography>
         <hr/>
         <Typography variant="h5" component="h5">
-          {info.address}
+          {info.attributes.address + '-'+info.attributes.city}
         </Typography>
         <Typography className={classes.pos+' '+ classes.btncolor} >
-         Open time:  {info.workTime}
+         Open time:  {info.attributes.openHour + '-' + info.attributes.closeHour}
         </Typography>
         <Typography variant="body2" component="span">
-          {info.telNum}
+          {info.attributes.phone1}
         
         </Typography>
       </CardContent>
