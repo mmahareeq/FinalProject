@@ -1,27 +1,21 @@
-import './cardContainer.css';
-import * as React from 'react';
-import Cards from '../../components/card/Cards'
-import { experimentalStyled as styled } from '@mui/material/styles';
+import React,{useEffect,useState} from 'react';
+import Cards from '../../components/card/Cards';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import Loading from '../loading/Loading.jsx';
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-export default function CardContainer() {
-  return (
-    <Box sx={{ flexGrow: 1 }} padding={9} className="cardContainer-style" >
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        {Array.from(Array(6)).map((_, index) => (
-          <Grid item xs={2} sm={4} md={4} key={index}>
-           <Cards/>
-          </Grid>
-        ))}
+export default function CardContainer({products}) {
+  console.log("products");
+   return (
+    <Box sx={{ flexGrow: 1 }} padding={6}  >
+    <Grid container spacing={{ xs: .5, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+      { 
+        products.length !==0 ? products.data.map((value) => (
+          <Grid item xs={2} sm={4} md={4}>
+        <Cards info={value} ></Cards>
+        </Grid>
+        )):<Loading/>
+    }
       </Grid>
     </Box>
   );

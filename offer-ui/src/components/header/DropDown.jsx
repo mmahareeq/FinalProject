@@ -1,47 +1,49 @@
-import * as React from 'react';
-import './dropDown.css';
-
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
+import   React,{useEffect,useState}  from 'react';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import Fade from '@mui/material/Fade';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import CardContainer from '../../components/cardContainer/CardContainer.jsx'
 
-export default function FadeMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+export default function BasicSelect({cate, products}) {
+    const [a, setAr] = useState('');
+  const [age, setAge] = useState('');
 
+
+  console.log({products});
+//   const [arr, setArrr] =React.useState('');
+  const handleChange = (event) => {
+    //   setAge(event.target.value);
+      setAr(event.target.value);
+      console.log(a);
+    //   cate.data.map(item=>item.attributes.categoryName === event.target.value ?
+    //      setArrr(cate.data):console.log("false") );
+    // setArrr(" Sa");
+    //   console.log(arr);
+    //   return<CardContainer products={arr}/>
+  };
   return (
-    <div>
-      <Button className="Button-style"
-        id="fade-button"
-        aria-controls={open ? 'fade-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-        <h6>Category</h6>
-      </Button>
-      <Menu
-        id="fade-menu"
-        MenuListProps={{
-          'aria-labelledby': 'fade-button',
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        TransitionComponent={Fade}
-      >
-        <MenuItem onClick={handleClose}>Men's Wear </MenuItem>
-        <MenuItem onClick={handleClose}>Women's Wear</MenuItem>
-        <MenuItem onClick={handleClose}>Food</MenuItem>
-        <MenuItem onClick={handleClose}>Home Accessories</MenuItem>
-      </Menu>
-    </div>
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Category</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          label="Category"
+          onChange={handleChange}
+        >
+        <MenuItem  value ="All">All</MenuItem>)
+        
+        {cate.length !==0  ? cate.data.map(category=>  
+            <MenuItem  value ={category.attributes.categoryName} >
+            {category.attributes.categoryName} </MenuItem> ):null}
+        </Select>
+        {
+
+        }   
+      </FormControl>
+    </Box>
   );
 }

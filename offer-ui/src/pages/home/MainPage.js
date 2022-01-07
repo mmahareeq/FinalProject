@@ -1,12 +1,13 @@
 import React from 'react'
+
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
-import Products from '../../components/products/Products.jsx'
+import Slider from '../../components/imageslider/ImageSlider.jsx'
 export default function Home() {
     return (
         <div>
-            <Header/>        
-            <Products/>
+            <Header/>
+            <Slider/>
             <Footer/>
         </div>
     )
